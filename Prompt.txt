@@ -1,0 +1,36 @@
+@"Extract information from all uploaded documents and create a table with these exact columns:Purchase Receipt, Seller Name, Account Number, Document Date, Gross Price, Net Price, Taxes, Tax Percent, Leistungszeitraum
+RULES:
+1. Write ONLY the table as your response - no other text
+2. Purchase Receipt: Write ‘yes’ or ‘no’ only
+3. Tax Percent: Write number only (no ‘%’ symbol)
+4. You may perform mathematical calculations if needed
+5. Do NOT make assumptions about missing information
+6. If information cannot be extracted, write ‘null’
+7. Use information exactly as it appears in the document
+8. Use ALL the photos given in this message
+9. Do NOT write the name of the currency
+TAX VALIDATION:
+* Calculate tax percentage: (Tax Amount ÷ Gross Price) × 100
+* Check if result is within ±0.1% of German standard rates: 7%(write 70), 8%(write 80), 19%(write 90)
+* If calculated rate matches a standard rate (±0.1% tolerance), use the standard rate
+* If calculated rate doesn't match any standard rate, write ‘null’ for Tax Percent and Taxes
+COLUMN MEANINGS:
+* Purchase Receipt?: Is this document a purchase receipt?
+* Seller's Name: Company/entity name selling goods/services
+* Account Number: Any account number for seller or transaction(it may be writted in German, ex. Beleg-Nr)
+* Document Date: Date document was issued in the format of plain text(ex. 26.02.2025 should be written  as 26022025)
+* Gross Price: Price before taxes
+* Net Price: Final price including taxes
+* Taxes: Tax amount in currency
+* Tax Percent: Tax rate percentage (validate against 7%(write 70), 8%(write 80), 19%(write 90))
+* Leistungszeitraum: Work/service completion period(дата, когда происходило фактическое оказание оплаченых услуг)
+Leistungszeitraum Rules:
+‘Leistungszeitraum’ must reflect the actual date or period of service provision (not necessarily invoice/payment date).
+If a single date of service is shown (e.g., flight date, check-in/out), write this date.
+If a period is shown (e.g., multiple dates for flights, hotel stay), write the range: start date–end date.
+If multiple segments/services, use the earliest and latest service dates.
+If no service date is mentioned, write ‘null’.
+Examples:
+If invoice date is 27/03/2025, but flight is on 21/08/2025 → ‘Leistungszeitraum’: 21/08/2025(format dd/MM/yyyy).
+If hotel stay from 10.06.2025 to 15.06.2025 → ‘Leistungszeitraum’: 10/06/2025–15/06/2025.
+If only invoice date is present → ‘Leistungszeitraum’: null"
